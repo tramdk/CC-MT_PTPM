@@ -9,6 +9,7 @@ namespace WebTraSua.Controllers
 {
     public class NguoiDungController : Controller
     {
+        //huy kid lam
         // GET: NguoiDung
         DataClasses1DataContext data = new DataClasses1DataContext();
         public ActionResult Index()
