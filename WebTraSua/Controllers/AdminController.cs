@@ -65,6 +65,7 @@ namespace WebTraSua.Controllers
         }
         [HttpPost]
         [ValidateInput(false)]
+        //Tram lam
         public ActionResult ThemMoiSanPham(ChiTietSanPham sp, HttpPostedFileBase fileUpload, HttpPostedFileBase fileUpload_1, HttpPostedFileBase fileUpload_2, HttpPostedFileBase fileUpload_3)
         {
             //Dua du lieu vao dropdownload
