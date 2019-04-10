@@ -25,7 +25,7 @@ namespace WebTraSua.Controllers
             }
             return listGiohang;
         }
-        // thêm vào giỏ hàng
+        // thêm vào giỏ hàng huy kid lam
         public ActionResult ThemGioHang(int iMaSP, string strURL)
         {
             // lấy ra session giohang
