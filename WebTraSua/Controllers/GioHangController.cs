@@ -84,7 +84,7 @@ namespace WebTraSua.Controllers
             ViewBag.TongTien = TongTien();
             return PartialView();
         }
-        //xóa Giohang
+        //xóa Giohang huy kids
         public ActionResult XoaGiohang(int iMaSP)
         { //Lay gio hang tu Session
             List<GioHang> lstGiohang = LayGioHang();
