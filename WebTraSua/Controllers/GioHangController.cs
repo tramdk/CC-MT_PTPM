@@ -25,7 +25,7 @@ namespace WebTraSua.Controllers
             }
             return listGiohang;
         }
-        // thêm vào giỏ hàng
+        // thêm vào giỏ hàng huy kid lam
         public ActionResult ThemGioHang(int iMaSP, string strURL)
         {
             // lấy ra session giohang
@@ -54,7 +54,7 @@ namespace WebTraSua.Controllers
             }
             return iTongSoLuong;
         }
-        // tính tổng tiền
+        // tính tổng tiền //thanh toan huy kid
         private decimal TongTien()
         {
             decimal iTongTien = 0;
@@ -84,7 +84,7 @@ namespace WebTraSua.Controllers
             ViewBag.TongTien = TongTien();
             return PartialView();
         }
-        //xóa Giohang
+        //xóa Giohang huy kids
         public ActionResult XoaGiohang(int iMaSP)
         { //Lay gio hang tu Session
             List<GioHang> lstGiohang = LayGioHang();
