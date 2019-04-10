@@ -1,0 +1,52 @@
+ public ActionResult ThemMoiTheLoai()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult ThemMoiTheLoai(TheLoaiSanPham theloai, HttpPostedFileBase fileUpload_logo)
+        {
+            //Them vao CSDL  
+            if (fileUpload_logo == null)
+            {
+                ViewBag.Thongbao = "Vui lòng ch?n ?nh bìa";
+                return View();
+            }
+            //Them vao CSDL
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    //Luu ten fie, luu y bo sung thu vien using System.IO;
+                    var fileName_logo = Path.GetFileName(fileUpload_logo.FileName);
+                    //Luu duong dan cua file
+                    var path_logo = Path.Combine(Server.MapPath("~/images"), fileName_logo);
+                    //Kiem tra hình anh ton tai chua?
+                    if (System.IO.File.Exists(path_logo))
+                        ViewBag.Thongbao = "Hình ?nh dã t?n t?i";
+                    else
+                    {
+                        //Luu hinh anh vao duong dan
+                        fileUpload_logo.SaveAs(path_logo);
+                    }
+                    theloai.Logo = fileName_logo;
+                    //Luu vao CSDL
+                    data.TheLoaiSanPhams.InsertOnSubmit(theloai);
+                    data.SubmitChanges();
+                }
+                return RedirectToAction("TheLoaiSanPham");
+            }
+
+        }
+        public ActionResult ChiTietTheLoai(int id)
+        {
+            //Lay ra doi tuong sach theo ma
+            TheLoaiSanPham theloai = data.TheLoaiSanPhams.SingleOrDefault(n => n.MaTheLoai == id);
+            ViewBag.MaTheLoai = theloai.MaTheLoai;
+            if (theloai == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(theloai);
+        }
