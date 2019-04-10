@@ -1,0 +1,27 @@
+public ActionResult XoaSanPham(int id)
+        {
+            //Lay ra doi tuong sach can xoa theo ma
+            ChiTietSanPham sp = data.ChiTietSanPhams.SingleOrDefault(n => n.MaSP == id);
+            ViewBag.MaSP = sp.MaSP;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            return View(sp);
+        }
+        [HttpPost, ActionName("XoaSanPham")]
+        public ActionResult XacNhanXoa(int id)
+        {
+            //Lay ra doi tuong sach can xoa theo ma
+            ChiTietSanPham sp = data.ChiTietSanPhams.SingleOrDefault(n => n.MaSP == id);
+            ViewBag.MaSP = sp.MaSP;
+            if (sp == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            data.ChiTietSanPhams.DeleteOnSubmit(sp);
+            data.SubmitChanges();
+            return RedirectToAction("SanPham");
+        }
