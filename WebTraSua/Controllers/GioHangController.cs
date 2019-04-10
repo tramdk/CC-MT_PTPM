@@ -54,7 +54,7 @@ namespace WebTraSua.Controllers
             }
             return iTongSoLuong;
         }
-        // tính tổng tiền
+        // tính tổng tiền //thanh toan huy kid
         private decimal TongTien()
         {
             decimal iTongTien = 0;
